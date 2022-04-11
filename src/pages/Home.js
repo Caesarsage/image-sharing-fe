@@ -84,14 +84,14 @@ const Home = () => {
           </label>
         </div>
         <div className='mb-4'>
-          <label className='form-label form-control' htmlFor='pwd'>
+          <label className='form-label' htmlFor='pwd'>
             Password             
-          </label>
-          <i>Protect your image</i>
+          </label><br></br>
           <input
             type='password'
             className='form-input form-control'
             id='pwd'
+            placeholder='Protect your image'
             onChange={(e)=> setPassword(e.target.value)}
             required
           />
