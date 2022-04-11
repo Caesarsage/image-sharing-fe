@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import {Error} from "./pages/Error";
 import { Index } from "./pages/unlock";
 import { View } from "./pages/View";
+import { Navbar } from "./pages/Navbar";
 
 const MyRedirect = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ function App() {
   return (
     <div>
         <BrowserRouter>
-          {/* <Navbar /> */}
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/share/:id" element={ user ? <View/> : <MyRedirect />} /> 

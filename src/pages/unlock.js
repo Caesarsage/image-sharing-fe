@@ -17,7 +17,7 @@ export const Index = () => {
     setLoading(true)
     setMessage({ type: "", msg: "" });
     try {
-      const res = await ImageFinder.post(`http://localhost:4000/share/auth/${id}`, {password})
+      const res = await ImageFinder.post(`/auth/${id}`, {password})
       localStorage.setItem('uploadProfile', JSON.stringify({...res?.data}))
       setLoading(false)
       navigate(`/share/${id}`)
