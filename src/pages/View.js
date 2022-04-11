@@ -38,7 +38,7 @@ export const View = () => {
 
   useEffect(()=>{
     fetchSingleImage()
-  },[id])
+  },[])
   
 
   return (
