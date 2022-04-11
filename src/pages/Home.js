@@ -4,7 +4,7 @@ import { RWebShare } from "react-web-share";
 import Progress from '../components/Progress'
 import Message from '../components/Message'
 import ImageFinder from '../api/index'
-import { Loading } from '../components/loader/Loading';
+import { Loading } from '../components/Loading';
 
 const Home = () => {
   const [selectedfile, setSelectedFile] = useState('')

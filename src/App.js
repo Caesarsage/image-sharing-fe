@@ -12,7 +12,7 @@ const MyRedirect = () => {
 };
 
 function App() {
-  const user = JSON.parse(localStorage.getItem('uploadProfile'))
+  const user = JSON.parse(localStorage?.getItem('uploadProfile'))
   
   return (
     <div>

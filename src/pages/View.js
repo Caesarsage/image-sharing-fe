@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ImageFinder from '../api/index'
-import { Loading } from '../components/loader/Loading';
+import { Loading } from '../components/Loading';
 import Message from '../components/Message';
 
 export const View = () => {
