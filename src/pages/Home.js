@@ -44,11 +44,7 @@ const Home = () => {
       setTimeout(() => setUploadFile(0), 10000)
       setMessage({msg:'Uploaded successfully', type:'success'})
     } catch (error) {
-      if(error.response.status === 500){
-        setMessage({msg:'An Error occur with the server!!!', type:'error'})
-      }else{
-        setMessage({msg: error.response.data.msg, type: 'error'})
-      }
+      setMessage({msg: 'Encounter an Error', type: 'error'})
       setUploadPercentage(0)
     }
   }
@@ -58,6 +54,7 @@ const Home = () => {
       alert('Not a supported image format');
       setMessage({type:"error", msg:"Not a supported image format"})
       setFilename("Choose image...")
+      setSelectedFile('')
     }else{
       setSelectedFile(e.target.files[0]);
       setFilename(e.target.files[0].name);
