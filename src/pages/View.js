@@ -11,34 +11,36 @@ export const View = () => {
 
   const {id} = useParams()
 
-  const fetchSingleImage = async ()=>{
-    try {
-      const res = await ImageFinder.get(`/${id}`,{
-        headers :{
-          'authorization': `Bearer ${
-            JSON.parse(localStorage.getItem("uploadProfile")).token
-          }`
-        }
-      })
-
-      setLoading(true)
-      if (res){
-        setLoading(false)
-        setMessage({ type: "success", msg: "Image found " });
-        setImageUrl(res.data.data)
-      }else{
-        setLoading(false)
-        setMessage({ type: "error", msg: "An error occur" });
-      }
-    } catch (error) {
-      setMessage({ type: "error", msg: error });
-      console.log(error);
-    }
-  }
+  
 
   useEffect(()=>{
+    const fetchSingleImage = async ()=>{
+      try {
+        const res = await ImageFinder.get(`/${id}`,{
+          headers :{
+            'authorization': `Bearer ${
+              JSON.parse(localStorage.getItem("uploadProfile")).token
+            }`
+          }
+        })
+  
+        setLoading(true)
+        if (res){
+          setLoading(false)
+          setMessage({ type: "success", msg: "Image found " });
+          setImageUrl(res.data.data)
+        }else{
+          setLoading(false)
+          setMessage({ type: "error", msg: "An error occur" });
+        }
+      } catch (error) {
+        setMessage({ type: "error", msg: error });
+        console.log(error);
+      }
+    }
     fetchSingleImage()
-  },[])
+    
+  },[id])
   
 
   return (
