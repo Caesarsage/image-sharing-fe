@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Loading.css";
+import "./loading.css";
 
 export const Loading = () => {
   return (
@@ -11,7 +11,7 @@ export const Loading = () => {
         <p>d</p>
         <p>i</p>
         <p>n</p>
-        <p>g </p>
+        <p>g</p>
       </div>
     </>
   );

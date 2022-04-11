@@ -4,6 +4,7 @@ import { RWebShare } from "react-web-share";
 import Progress from '../components/Progress'
 import Message from '../components/Message'
 import ImageFinder from '../api/index'
+import { Loading } from '../components/loader/Loading';
 
 const Home = () => {
   const [selectedfile, setSelectedFile] = useState('')
@@ -13,6 +14,8 @@ const Home = () => {
   const [filename, setFilename] = useState('Choose image...')
   const [uploadPercentage, setUploadPercentage] = useState(0)
   const [message, setMessage] = useState(null)
+  const [loading, setLoading] = useState(false);
+
 
   const onSubmit = async (e)=>{
     e.preventDefault()
@@ -20,7 +23,7 @@ const Home = () => {
     
     formData.append('image', selectedfile)
     formData.append('password', password)
-
+    setLoading(true)
     try {
       const result = await ImageFinder.post('/', formData, {
         Headers :{
@@ -39,11 +42,12 @@ const Home = () => {
       const { fileName, filePath, id} = result.data.data
       setUploadFile({ fileName, filePath})
       setFileId(id)
-
+      setLoading(false)
       // clear percentage
       setTimeout(() => setUploadFile(0), 10000)
       setMessage({msg:'Uploaded successfully', type:'success'})
     } catch (error) {
+      setLoading(false)
       setMessage({msg: 'Encounter an Error', type: 'error'})
       setUploadPercentage(0)
     }
@@ -63,6 +67,7 @@ const Home = () => {
 
   return (
     <div className='container mt-4'>
+      {loading && <Loading/> } 
       {message ? <Message msg={message.msg} type={message.type} /> : null}
       <form onSubmit={onSubmit}>
 
