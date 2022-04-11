@@ -115,7 +115,7 @@ const Home = () => {
               data={{
                 text: `protected image, enter password to open ...`,
                 url: `/share/${id}`,
-                title: `share`,
+                title: `https://secure-img-share.netlify.app/share/${id}`,
               }}
               onClick={() => console.log("shared successfully!")}
             >
