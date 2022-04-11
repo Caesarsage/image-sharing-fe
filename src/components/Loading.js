@@ -1,5 +1,4 @@
 import React from 'react'
-import "../loader/";
 
 export const Loading = () => {
   return (
