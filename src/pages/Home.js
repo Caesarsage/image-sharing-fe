@@ -4,8 +4,6 @@ import { RWebShare } from "react-web-share";
 import Progress from '../components/Progress'
 import Message from '../components/Message'
 import ImageFinder from '../api/index'
-import { Index } from './unlock';
-import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [selectedfile, setSelectedFile] = useState('')
@@ -16,7 +14,6 @@ const Home = () => {
   const [uploadPercentage, setUploadPercentage] = useState(0)
   const [message, setMessage] = useState(null)
 
-  const navigate = useNavigate()
   const onSubmit = async (e)=>{
     e.preventDefault()
     const formData = new FormData();

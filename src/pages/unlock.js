@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ImageFinder from '../api/index'
 import { Loading } from '../components/loader/Loading';
 import Message from '../components/Message';

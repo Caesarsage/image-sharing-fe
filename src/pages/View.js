@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ImageFinder from '../api/index'
+import { Loading } from '../components/loader/Loading';
 import Message from '../components/Message';
-import axios from 'axios';
 
 export const View = () => {
   const [imageUrl, setImageUrl] = useState('')
   const [message, setMessage] = useState(null)
   const [loading, setLoading] = useState(false);
-
 
   const {id} = useParams()
 
@@ -45,6 +44,7 @@ export const View = () => {
   return (
     <>
       {message ? <Message msg={message.msg} type={message.type} /> : null}
+      {loading && <Loading /> } 
       <div className='container-fluid row bg-dark mt-5'>
         <div className='col-md-6 m-auto'>
           {/* <h3 className='text-center'>{uploadFile.fileName}</h3> */}

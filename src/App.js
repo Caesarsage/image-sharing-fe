@@ -21,8 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/share/:id" element={ user ? <View/> : <MyRedirect />} /> 
-            <Route path="/share/:id/auth" element={<Index />} />                    
-            {/* <Route path="/view" element={ <View />} /> */}
+            <Route path="/share/:id/auth" element={<Index />} />     
             <Route path="*" element={<Error />} />
           </Routes>
           {/* <Footer /> */}
