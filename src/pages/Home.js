@@ -17,6 +17,7 @@ const Home = () => {
   const onSubmit = async (e)=>{
     e.preventDefault()
     const formData = new FormData();
+    
     formData.append('image', selectedfile)
     formData.append('password', password)
 
@@ -53,8 +54,14 @@ const Home = () => {
   }
 
   const onChange = async (e) =>{
-    setSelectedFile(e.target.files[0]);
-    setFilename(e.target.files[0].name);
+    if (!e.target.files[0].name.match(/.(jpg|jpeg|png|svg)$/i)){
+      alert('Not a supported image format');
+      setMessage({type:"error", msg:"Not a supported image format"})
+      setFilename("Choose image...")
+    }else{
+      setSelectedFile(e.target.files[0]);
+      setFilename(e.target.files[0].name);
+    }
   }
 
   return (
@@ -101,14 +108,14 @@ const Home = () => {
           <div className='col-md-6 m-auto'>
             <h3 className='text-center'>{uploadFile.fileName}</h3>
             <h5>Your file protected link</h5>
-            <i>`http://localhost:3000/share/${id}` </i>
+            <i>https://secure-img-share.netlify.app/share/${id} </i>
 
 
             <RWebShare
               data={{
                 text: `protected image, enter password to open ...`,
                 url: `/share/${id}`,
-                title: `/share/${id}`,
+                title: `share`,
               }}
               onClick={() => console.log("shared successfully!")}
             >
