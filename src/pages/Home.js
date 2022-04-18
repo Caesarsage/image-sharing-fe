@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RWebShare } from "react-web-share";
 
 import Progress from '../components/Progress'
 import Message from '../components/Message'
 import ImageFinder from '../api/index'
 import { Loading } from '../components/Loading';
+import jwtDecode from 'jwt-decode';
+import { Navigate} from 'react-router-dom';
 
 const Home = () => {
   const [selectedfile, setSelectedFile] = useState('')
@@ -15,6 +17,23 @@ const Home = () => {
   const [uploadPercentage, setUploadPercentage] = useState(0)
   const [message, setMessage] = useState(null)
   const [loading, setLoading] = useState(false);
+
+  const user = JSON.parse(localStorage.getItem('uploadProfile'))
+
+  useEffect(()=>{
+    // jwtDecode
+    const token = user?.token
+
+    if (token) {
+      const decode =  jwtDecode(token);
+
+      if(decode.exp * 1000 < new Date().getTime()){
+        localStorage.clear()
+        return <Navigate to={`/share/${id}/auth`} replace />
+        
+      }
+    }
+  },[])
 
 
   const onSubmit = async (e)=>{
@@ -110,14 +129,14 @@ const Home = () => {
           <div className='col-md-6 m-auto'>
             <h3 className='text-center'>{uploadFile.fileName}</h3>
             <h5>Your file protected link</h5>
-            <i>https://secure-img-share.netlify.app/share/${id} </i>
+            <i>https://secure-img-share.netlify.app/share/${id}/auth </i>
 
 
             <RWebShare
               data={{
                 text: `protected image, enter password to open ...`,
-                url: `/share/${id}`,
-                title: `https://secure-img-share.netlify.app/share/${id}`,
+                url: `/share/${id}/auth`,
+                title: `https://secure-img-share.netlify.app/share/${id}/auth`,
               }}
               onClick={() => console.log("shared successfully!")}
             >
