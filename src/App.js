@@ -32,7 +32,7 @@ function App() {
         
       }
     }
-  },[])
+  },[user?.token])
 
   return (
     <div className="d-flex flex-column min-vh-100">

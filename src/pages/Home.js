@@ -33,7 +33,7 @@ const Home = () => {
         
       }
     }
-  },[])
+  },[id, user?.token])
 
 
   const onSubmit = async (e)=>{
