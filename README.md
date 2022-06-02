@@ -1,3 +1,5 @@
 # image-sharing-fe
 
-https://www.secure-img-share.netlify.app
+Send image securely to love ones
+
+https://secure-img-share.netlify.app/
