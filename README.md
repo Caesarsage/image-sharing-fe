@@ -1,3 +1,3 @@
 # image-sharing-fe
 
-secure-img-share.netlify.app
+https://www.secure-img-share.netlify.app
